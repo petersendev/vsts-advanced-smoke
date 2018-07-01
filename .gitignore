@@ -1,0 +1,6 @@
+**/dist
+**/node_modules
+**/*error.log
+**/test-results
+**/coverage
+**/*.vsix
