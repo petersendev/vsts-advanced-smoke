@@ -1,0 +1,70 @@
+{
+    "manifestVersion": 1,
+    "id": "advanced-smoke",
+    "name": "Advanced Smoke",
+    "version": "0.0.1",
+    "publisher": "petersendev",
+    "targets": [
+        {
+            "id": "Microsoft.VisualStudio.Services"
+        }
+    ],
+    "description": "Web smoke tests with header support and retry.",
+    "categories": [
+        "Build and release"
+    ],
+    "icons": {
+        "default": "images/logo.png"
+    },
+    "files": [
+        {
+            "path": "task"
+        },
+        {
+            "path": "images/screenshots",
+            "addressable": true
+        }
+    ],
+    "content": {
+        "details": {
+            "path": "README.md"
+        },
+        "license": {
+            "path": "LICENSE"
+        }
+    },
+    "links": {
+        "home": {
+            "uri": "https://github.com/petersendev/vsts-advanced-smoke"
+        },
+        "getstarted": {
+            "uri": "https://github.com/petersendev/vsts-advanced-smoke/blob/master/README.md"
+        },
+        "support": {
+            "uri": "https://github.com/petersendev/vsts-advanced-smoke/issues"
+        },
+        "repository": {
+            "uri": "https://github.com/petersendev/vsts-advanced-smoke"
+        },
+        "issues": {
+            "uri": "https://github.com/petersendev/vsts-advanced-smoke/issues"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "uri": "https://github.com/petersendev/vsts-advanced-smoke"
+    },
+    "contributions": [
+        {
+            "id": "AdvancedSmoke",
+            "type": "ms.vss-distributed-task.task",
+            "targets": [
+                "ms.vss-distributed-task.tasks"
+            ],
+            "properties": {
+                "name": "task",
+                "description": "Web smoke tests with header support and retry."
+            }
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "vsts-advanced-smoke",
+  "version": "0.0.1",
+  "description": "Web smoke tests with header support and retry",
+  "main": "dist/task.js",
+  "repository": "https://github.com/petersendev/vsts-advanced-smoke",
+  "author": "Arne Petersen <arne@petersen.pro>",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf dist/*",
+    "tsc": "tsc --pretty --outDir dist",
+    "build": "yarn run clean && yarn run tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^10.5.1",
+    "rimraf": "^2.6.2",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "advanced-smoke": "^0.2.0",
+    "vsts-task-lib": "^2.5.0"
+  }
+}
