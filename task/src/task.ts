@@ -1,5 +1,6 @@
 import * as tl from 'vsts-task-lib';
 import * as smoke from "advanced-smoke";
+import * as delay from "delay";
 
 async function run()
 {
@@ -52,36 +53,53 @@ async function run()
             });
     }
 
-    const retryTimes = parseInt(tl.getInput("retryTimes", false) || "0", 10);
-    const retryDelay = parseInt(tl.getInput("retryDelay", false) || "0", 10);
-
-
-    let error = false;
+    const retryCount = parseInt(tl.getInput("retryCount", true), 10);
+    const retryDelay = parseInt(tl.getInput("retryDelay", true), 10);
 
     const tlLogger = {
         log: (...args) => { console.log(...args); },
-        error: (...args) => { tl.error(args.join(" ")); }
+        error: (...args) => { tl.warning(args.join(" ")); }
     }
 
-    for (let url of urls)
+    let error = false;
+    let attempts = 0;
+
+
+    console.log(retryCount > 0 ? `Starting tests, will retry ${retryCount} times with a delay of ${retryDelay}ms` : "Starting tests");
+
+    do
     {
-        try
+        if (attempts > 0)
         {
-            error = !await smoke.smokeTest({
-                url,
-                headers,
-                method: method.toUpperCase(),
-                status,
-                timeout,
-                resolveWithFullResponse: true
-            }, tlLogger) || error;
+            console.log("==============================================================================");
+            console.log(`retry ${attempts} of ${retryCount}, delaying ${retryDelay}ms.`);
+            await delay(retryDelay);
         }
-        catch (e)
+
+        attempts++;
+        error = false;
+
+        for (let url of urls)
         {
-            tl.error(e);
-            error = true;
+            try
+            {
+                error = !await smoke.smokeTest({
+                    url,
+                    headers,
+                    method: method.toUpperCase(),
+                    status,
+                    timeout,
+                    resolveWithFullResponse: true
+                }, tlLogger) || error;
+            }
+            catch (e)
+            {
+                tl.warning(e);
+                error = true;
+            }
         }
     }
+    while (error && attempts <= retryCount);
 
     tl.setResult(error ? tl.TaskResult.Failed : tl.TaskResult.Succeeded, error ? "Smoke test(s) failed" : "Smoke test(s) succeeded");
 }

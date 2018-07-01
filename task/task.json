@@ -91,6 +91,24 @@
             "required": false,
             "helpMarkDown": "One per line, format NAME=value.",
             "groupName": "advanced"
+        },
+        {
+            "name": "retryCount",
+            "type": "number",
+            "label": "Retries",
+            "required": true,
+            "defaultValue": "0",
+            "helpMarkDown": "Number of retries in case of failed tests.",
+            "groupName": "advanced"
+        },
+        {
+            "name": "retryDelay",
+            "type": "number",
+            "label": "Retry delay",
+            "required": true,
+            "defaultValue": "500",
+            "helpMarkDown": "Delay (in milliseconds) between retries.",
+            "groupName": "advanced"
         }
     ],
     "execution": {
