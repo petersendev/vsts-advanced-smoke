@@ -46,6 +46,6 @@ Delay (in milliseconds) between retries.
 
 ## Credits
 
-This task is using the [advanced-smoke npm package](https://www.npmjs.com/package/advanced-smoke) ([GitHub](https://github.com/petersendev/node-advanced-smoke)) which also offers a CLI.
+This task is using the [advanced-smoke](https://www.npmjs.com/package/advanced-smoke) npm package ([GitHub](https://github.com/petersendev/node-advanced-smoke)) which also offers a CLI.
 
 Logo: "[Smoke](https://thenounproject.com/term/smoke/952776/)" icon by Beau Wingfield from [from the Noun Project](http://thenounproject.com/).
