@@ -1,7 +1,7 @@
 {
   "name": "vsts-advanced-smoke",
   "version": "0.0.1",
-  "description": "Web smoke tests with header support and retry",
+  "description": "Cross platform web smoke tests with header support, proxy support and retry option",
   "main": "dist/task.js",
   "repository": "https://github.com/petersendev/vsts-advanced-smoke",
   "author": "Arne Petersen <arne@petersen.pro>",
@@ -17,7 +17,7 @@
     "typescript": "^2.9.2"
   },
   "dependencies": {
-    "advanced-smoke": "^0.2.0",
+    "advanced-smoke": "^0.3.0",
     "delay": "^3.0.0",
     "vsts-task-lib": "^2.5.0"
   }

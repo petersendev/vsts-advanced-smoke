@@ -2,7 +2,7 @@
     "id": "0cf723f8-9caf-4808-8760-d38063ed0c02",
     "name": "AdvancedSmoke",
     "friendlyName": "Advanced Smoke Test",
-    "description": "Web smoke tests with header support and retry.",
+    "description": "Cross platform web smoke tests with header support, proxy support and retry option.",
     "category": "Utility",
     "author": "Arne Petersen",
     "version": {
@@ -76,20 +76,37 @@
             }
         },
         {
-            "name": "timeout",
-            "type": "number",
-            "label": "Timeout",
-            "required": false,
-            "helpMarkDown": "Number of milliseconds to wait for a server to send response.",
-            "groupName": "advanced"
-        },
-        {
             "name": "headers",
             "type": "multiLine",
             "label": "Headers",
             "defaultValue": "",
             "required": false,
             "helpMarkDown": "One per line, format NAME=value.",
+            "groupName": "advanced"
+        },
+        {
+            "name": "proxy",
+            "type": "string",
+            "label": "Proxy",
+            "required": false,
+            "helpMarkDown": "The proxy server used for the request(s). You can also specify ADVANCED_SMOKE_PROXY environment variable. HTTP_PROXY, HTTPS_PROXY and NO_PROXY are also supported.",
+            "groupName": "advanced"
+        },
+        {
+            "name": "strictSSL",
+            "type": "boolean",
+            "label": "Strict SSL",
+            "defaultValue": true,
+            "required": true,
+            "helpMarkDown": "Whether SSL certificates are required to be valid.",
+            "groupName": "advanced"
+        },
+        {
+            "name": "timeout",
+            "type": "number",
+            "label": "Timeout",
+            "required": false,
+            "helpMarkDown": "Number of milliseconds to wait for a server to send response.",
             "groupName": "advanced"
         },
         {
