@@ -9,7 +9,7 @@
             "id": "Microsoft.VisualStudio.Services"
         }
     ],
-    "description": "Web smoke tests with header support and retry.",
+    "description": "Cross platform web smoke tests with header support, proxy support and retry option.",
     "categories": [
         "Build and release"
     ],
@@ -63,7 +63,7 @@
             ],
             "properties": {
                 "name": "task",
-                "description": "Web smoke tests with header support and retry."
+                "description": "Cross platform web smoke tests with header support, proxy support and retry option."
             }
         }
     ]

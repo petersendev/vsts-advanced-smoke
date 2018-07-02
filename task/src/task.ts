@@ -37,6 +37,8 @@ async function run()
     const method = tl.getInput("method", true) || "GET";
     const status = parseInt(tl.getInput("status", true), 10);
     const timeout = tl.getInput("timeout", false) ? parseInt(tl.getInput("timeout", false), 10) : null;
+    const strictSSL = tl.getBoolInput("strictSSL", true);
+    const proxy = tl.getInput("proxy", false);
 
     let headers = null;
     const headersInput = tl.getInput("headers", false);
@@ -85,11 +87,13 @@ async function run()
             {
                 error = !await smoke.smokeTest({
                     url,
-                    headers,
-                    method: method.toUpperCase(),
                     status,
+                    method: method.toUpperCase(),
+                    proxy,
+                    headers,
+                    strictSSL,
                     timeout,
-                    resolveWithFullResponse: true
+                    resolveWithFullResponse: true,
                 }, tlLogger) || error;
             }
             catch (e)
