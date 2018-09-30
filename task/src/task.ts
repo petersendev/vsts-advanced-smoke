@@ -34,10 +34,10 @@ async function run()
         return;
     }
 
-    const method = tl.getInput("method", true) || "GET";
-    const status = parseInt(tl.getInput("status", true), 10);
+    const method = tl.getInput("method", false) || "GET";
+    const status = parseInt(tl.getInput("status", false) || "200", 10);
     const timeout = tl.getInput("timeout", false) ? parseInt(tl.getInput("timeout", false), 10) : null;
-    const strictSSL = tl.getBoolInput("strictSSL", true);
+    const strictSSL = tl.getBoolInput("strictSSL", false);
     const proxy = tl.getInput("proxy", false);
 
     let headers = null;
@@ -55,8 +55,8 @@ async function run()
             });
     }
 
-    const retryCount = parseInt(tl.getInput("retryCount", true), 10);
-    const retryDelay = parseInt(tl.getInput("retryDelay", true), 10);
+    const retryCount = parseInt(tl.getInput("retryCount", false) || "0", 10);
+    const retryDelay = parseInt(tl.getInput("retryDelay", false) || "500", 10);
 
     const tlLogger = {
         log: (...args) => { console.log(...args); },
@@ -65,7 +65,6 @@ async function run()
 
     let error = false;
     let attempts = 0;
-
 
     console.log(retryCount > 0 ? `Starting tests, will retry ${retryCount} times with a delay of ${retryDelay}ms` : "Starting tests");
 
